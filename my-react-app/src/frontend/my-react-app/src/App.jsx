@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="bg-gray-900 text-white h-screen flex flex-col items-center justify-center">
+    <div className="h-screen w-screen flex flex-col items-center justify-center">
       <h1 className="text-lg text-gray-300">The Alchemist’s Kitchen</h1>
       <h2 className="text-4xl md:text-5xl font-serif mt-4">Explore your next potion...</h2>
       
