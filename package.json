@@ -1,0 +1,19 @@
+{
+  "name": "alchemistkitchen",
+  "version": "1.0.0",
+  "description": "A simple web server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js",
+    "server2": "node server2.js"
+  },
+  "author": {
+    "name": "Alchemist Kitchen"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
+  }
+}
