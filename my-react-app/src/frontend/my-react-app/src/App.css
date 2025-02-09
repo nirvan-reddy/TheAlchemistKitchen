@@ -8,6 +8,7 @@
   font-style: normal;
 }
 
+/* General Page Styling */
 body {
   background-color: #1a1a1a;
   background-image: url('/images/background.jpg');
@@ -26,6 +27,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+/* Header */
 h1 {
   position: absolute;
   top: 20px;
@@ -33,11 +35,12 @@ h1 {
   transform: translateX(-50%);
   text-align: center;
   color: #b3b3b3;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   font-family: 'IM Fell English', serif;
 }
 
+/* Main Content */
 .container {
   display: flex;
   flex-direction: column;
@@ -47,6 +50,7 @@ h1 {
   max-width: 80%;
 }
 
+/* Title */
 h2 {
   text-align: center;
   margin-top: 20px;
@@ -56,10 +60,8 @@ h2 {
   margin-bottom: 20px;
 }
 
+/* Controls (Dropdowns & Inputs) */
 .controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -81,6 +83,7 @@ select, input[type="number"], input[type="text"] {
   font-family: 'Avenir Next LT Pro', sans-serif;
 }
 
+/* Button */
 button {
   display: block;
   margin: 20px auto;
@@ -101,6 +104,7 @@ button:hover {
   background-color: #f3d9a5;
 }
 
+/* Controls Move Up When Brew Clicked */
 .brew-clicked .controls {
   position: absolute;
   top: 0;
@@ -120,4 +124,91 @@ button:hover {
   top: -5px;
   right: 5px;
   transition: transform 0.3s ease-in-out;
+}
+
+/* ================================ */
+/* 🔥 NEW STYLING FOR BOXED LAYOUT 🔥 */
+/* ================================ */
+
+/* Grid Container for Recipe and Details */
+.recipe-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 1000px;
+  margin-top: 40px;
+}
+
+/* Left Box - Recipe List */
+.recipe-list {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  text-align: left;
+}
+
+.recipe-list h2 {
+  font-size: 1.8rem;
+  color: #f8e7c9;
+  margin-bottom: 15px;
+}
+
+.recipe-item {
+  background: #333;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.recipe-item:hover {
+  background: #f8e7c9;
+  color: #333;
+}
+
+.recipe-item h3 {
+  font-size: 1.5rem; /* Larger Font */
+  font-weight: bold;
+  margin: 0;
+}
+
+.recipe-item p {
+  font-size: 1rem;
+  color: #ddd;
+  margin-top: 5px;
+}
+
+/* Right Box - Recipe Details */
+.recipe-details {
+  background: #f8e7c9;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  text-align: left;
+}
+
+.recipe-details h2 {
+  font-size: 2rem; /* Increased Size */
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.recipe-details p {
+  font-size: 1.2rem; /* Increased Size */
+  line-height: 1.5;
+}
+
+.recipe-details a {
+  color: #0077cc;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.recipe-details a:hover {
+  text-decoration: underline;
 }
