@@ -25,7 +25,7 @@ app.get('/search-recipes', async (req, res) => {
                 sort,
                 diet,
                 maxPrice: budget,
-                number: 10
+                number: 10,
             }
         });
         res.json(response.data);

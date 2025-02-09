@@ -126,28 +126,40 @@ button:hover {
   transition: transform 0.3s ease-in-out;
 }
 
-/* ================================ */
-/* 🔥 NEW STYLING FOR BOXED LAYOUT 🔥 */
-/* ================================ */
-
 /* Grid Container for Recipe and Details */
 .recipe-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   max-width: 1000px;
-  margin-top: 40px;
+  margin-top: 800px;
+}
+/* Container for main content after brew clicked */
+.brew-clicked {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 60px;
+  padding: 20px;
 }
 
+.recipe-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 50px;
+  margin-top: 200px;
+  width: 100%;
+}
 /* Left Box - Recipe List */
-.recipe-list {
+/* .recipe-list {
   background: #222;
-  padding: 20px;
+  padding: 20px, 30px, 20px, 50px;
   border-radius: 10px;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
   width: 100%;
   text-align: left;
-}
+} */
 
 .recipe-list h2 {
   font-size: 1.8rem;
@@ -171,12 +183,14 @@ button:hover {
 
 .recipe-item h3 {
   font-size: 1.5rem; /* Larger Font */
+  font-family: 'IM Fell English', serif;
   font-weight: bold;
   margin: 0;
 }
 
 .recipe-item p {
   font-size: 1rem;
+  font-family: 'Avenir Next LT Pro', sans-serif;
   color: #ddd;
   margin-top: 5px;
 }
@@ -185,11 +199,11 @@ button:hover {
 .recipe-details {
   background: #f8e7c9;
   color: #333;
-  padding: 20px;
+  padding: 20px, 20px, 20px, 20px;
   border-radius: 10px;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
   width: 100%;
-  text-align: left;
+  text-align: center;
 }
 
 .recipe-details h2 {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import "./App.css";
 
@@ -24,7 +24,18 @@ function App() {
           sortBy,
         },
       });
-      setRecipes(response.data.results);
+
+      // Get detailed information for each recipe
+      const detailedRecipes = await Promise.all(
+        response.data.results.map(async (recipe) => {
+          const detailResponse = await axios.get(`http://localhost:5000/recipe/${recipe.id}`);
+          return { ...recipe, ...detailResponse.data };
+        })
+      );
+
+      setRecipes(detailedRecipes);
+      
+      //setRecipes(response.data.results);
     } catch (error) {
       console.error("Error fetching recipes:", error);
     }
@@ -44,6 +55,10 @@ function App() {
               <option value="vegetarian">Vegetarian</option>
               <option value="vegan">Vegan</option>
               <option value="gluten free">Gluten Free</option>
+              <option value="ketogenic">Ketogenic</option>
+              <option value="paleo">Paleo</option>
+              <option value="pescetarian">Pescetarian</option>
+              <option value="dairy-free">Dairy Free</option>
             </select>
             <input
               type="number"
@@ -56,7 +71,7 @@ function App() {
               <option>Sort By</option>
               <option value="cook time">Cook time</option>
               <option value="calories">Calories</option>
-              <option value="affordability">Affordability</option>
+              <option value="price">Affordability</option>
             </select>
             <input
               type="text"
@@ -96,7 +111,7 @@ function App() {
                   onClick={() => setSelectedRecipe(recipe)}
                 >
                   <h3>{recipe.title}</h3>
-                  <p>{recipe.price ? `$${recipe.price.toFixed(2)}` : "$N/A"}</p>
+                  <p>{recipe.pricePerServing ? `$${recipe.price.toFixed(2)}` : "$N/A"}</p>
                 </div>
               ))
             )}
@@ -110,7 +125,7 @@ function App() {
                 <p>{selectedRecipe.summary || "No description available."}</p>
                 <a
                   href={selectedRecipe.sourceUrl}
-                  target="_blank"
+                  target={selectedRecipe.sourceUrl}
                   rel="noopener noreferrer"
                 >
                   View Full Recipe
