@@ -4,7 +4,7 @@ import "./App.css";
 
 function App() {
   const [diet, setDiet] = useState("");
-  const [mealType, setMealType] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [budget, setBudget] = useState("");
   const [numberOfPeople, setNumberOfPeople] = useState("");
   const [sortBy, setSortBy] = useState("");
@@ -17,7 +17,7 @@ function App() {
       const response = await axios.get("http://localhost:5000/search-recipes", {
         params: {
           diet,
-          mealType,
+          query: searchQuery,
           budget,
           numberOfPeople,
           sortBy,
@@ -31,8 +31,12 @@ function App() {
 
   return (
     <div className={`h-screen w-screen flex flex-col items-center justify-center ${isBrewClicked ? 'brew-clicked' : ''}`}>
-      <h1 className="text-lg text-gray-300">The Alchemist’s Kitchen</h1>
-      <h2 className="text-4xl md:text-5xl font-serif mt-4">Explore your next potion...</h2>
+      {!isBrewClicked && (
+        <>
+          <h1 className="text-lg text-gray-300">The Alchemist’s Kitchen</h1>
+          <h2 className="text-4xl md:text-5xl font-serif mt-4">Explore your next potion...</h2>
+        </>
+      )}
 
       <div className={`mt-8 flex flex-wrap justify-center gap-4 controls ${isBrewClicked ? 'brew-clicked' : ''}`}>
         <select className="bg-amber-200 text-gray-800 px-4 py-2 rounded-lg shadow-md" onChange={(e) => setDiet(e.target.value)}>
@@ -54,12 +58,12 @@ function App() {
           <option value="calories">Calories</option>
           <option value="affordability">Affordability</option>
         </select>
-        <select className="bg-amber-200 text-gray-800 px-4 py-2 rounded-lg shadow-md" onChange={(e) => setMealType(e.target.value)}>
-          <option>Meal Time</option>
-          <option value="breakfast">Breakfast</option>
-          <option value="lunch">Lunch</option>
-          <option value="dinner">Dinner</option>
-        </select>
+        <input
+          type="text"
+          className="bg-amber-200 text-gray-800 px-4 py-2 rounded-lg shadow-md"
+          placeholder="Search for a specific item"
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
         <input
           type="number"
           className="bg-amber-200 text-gray-800 px-4 py-2 rounded-lg shadow-md"
