@@ -1,4 +1,3 @@
-
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
@@ -48,35 +47,6 @@ app.get('/recipe/:id', async (req, res) => {
         res.status(500).json({ error: 'Error fetching recipe details' });
     }
 });
-
-// // Compare ingredient prices using price estimator
-// app.get('/compare-prices', async (req, res) => {
-//     try {
-//         const { ingredients, servings } = req.query;
-//         if (!ingredients) {
-//             return res.status(400).json({ error: 'Ingredients parameter is required' });
-//         }
-        
-//         console.log('Estimating prices for ingredients:', ingredients);
-//         const response = await axios.get('https://api.spoonacular.com/recipes/visualizePriceEstimator', {
-//             params: { 
-//                 apiKey: SPOONACULAR_API_KEY,
-//                 ingredients: ingredients, // Format: "2 cups rice, 1 pound chicken"
-//                 servings: servings || 2,
-//                 mode: 2 // Returns JSON instead of HTML
-//             }
-//         });
-        
-//         console.log('API Response:', response.data);
-//         res.json(response.data);
-//     } catch (error) {
-//         console.error('Error details:', error.response?.data || error.message);
-//         res.status(500).json({ 
-//             error: 'Error estimating prices',
-//             details: error.response?.data || error.message
-//         });
-//     }
-// });
 
 // Get recipes sorted by parameters
 app.get('/search-recipes', async (req, res) => {

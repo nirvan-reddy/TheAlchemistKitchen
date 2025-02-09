@@ -14,12 +14,14 @@ function App() {
   const handleBrew = async () => {
     setIsBrewClicked(true);
     try {
-      const response = await axios.post("/api/recipes", {
-        diet,
-        mealType,
-        budget,
-        numberOfPeople,
-        sortBy,
+      const response = await axios.get("http://localhost:5000/search-recipes", {
+        params: {
+          diet,
+          mealType,
+          budget,
+          numberOfPeople,
+          sortBy,
+        },
       });
       setRecipes(response.data.results);
     } catch (error) {
