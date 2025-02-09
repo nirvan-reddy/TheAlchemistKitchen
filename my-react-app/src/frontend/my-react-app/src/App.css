@@ -66,9 +66,10 @@ h2 {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out;
 }
 
-select {
+select, input[type="number"] {
   margin: 10px;
   background-color: #f8e7c9;
   color: #333;
@@ -98,4 +99,25 @@ button {
 
 button:hover {
   background-color: #f3d9a5;
+}
+
+.brew-clicked .controls {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  transition: transform 0.3s ease-in-out;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.brew-clicked-button {
+  position: absolute;
+  top: -5px;
+  right: 20px;
+  transition: transform 0.3s ease-in-out;
 }
