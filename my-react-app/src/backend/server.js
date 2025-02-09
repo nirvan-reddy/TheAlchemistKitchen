@@ -11,47 +11,10 @@ app.use(express.json());
 const SPOONACULAR_API_KEY = process.env.SPOONACULAR_API_KEY;
 const GROCERY_API_KEY = process.env.GROCERY_API_KEY;
 
-// Get meal plans based on user preferences
-app.get('/mealplan', async (req, res) => {
-    try {
-        const { diet, targetCalories, timeFrame, mealTime } = req.query;
-        const response = await axios.get(`https://api.spoonacular.com/mealplanner/generate`, {
-            params: {
-                apiKey: SPOONACULAR_API_KEY,
-                diet,
-                targetCalories,
-                timeFrame
-            }
-        });
-        res.json(response.data);
-    } catch (error) {
-        res.status(500).json({ error: 'Error fetching meal plan' });
-    }
-});
-
-// Get recipe details including price breakdown
-app.get('/recipe/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { numServings } = req.query;
-        const response = await axios.get(
-            `https://api.spoonacular.com/recipes/${id}/information`, {
-                params: {
-                    apiKey: SPOONACULAR_API_KEY,
-                    includeNutrition: true
-                }
-            }
-        );
-        res.json(response.data);
-    } catch (error) {
-        res.status(500).json({ error: 'Error fetching recipe details' });
-    }
-});
-
 // Get recipes sorted by parameters
 app.get('/search-recipes', async (req, res) => {
     try {
-        const { query, maxReadyTime, minCalories, maxCalories, sort, budget } = req.query;
+        const { query, maxReadyTime, minCalories, maxCalories, sort, diet, budget } = req.query;
         const response = await axios.get('https://api.spoonacular.com/recipes/complexSearch', {
             params: {
                 apiKey: SPOONACULAR_API_KEY,
@@ -60,6 +23,7 @@ app.get('/search-recipes', async (req, res) => {
                 minCalories,
                 maxCalories,
                 sort,
+                diet,
                 maxPrice: budget,
                 number: 10
             }
@@ -67,6 +31,23 @@ app.get('/search-recipes', async (req, res) => {
         res.json(response.data);
     } catch (error) {
         res.status(500).json({ error: 'Error searching recipes' });
+    }
+});
+
+// Get detailed recipe information
+app.get('/recipe/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information`, {
+            params: {
+                apiKey: SPOONACULAR_API_KEY,
+                includeNutrition: true // Include nutrition information
+            }
+        });
+        res.json(response.data);
+    } catch (error) {
+        console.error('Error details:', error.response?.data || error.message);
+        res.status(500).json({ error: 'Error fetching recipe details' });
     }
 });
 
