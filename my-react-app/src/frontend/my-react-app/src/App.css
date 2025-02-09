@@ -69,7 +69,7 @@ h2 {
   transition: transform 0.3s ease-in-out;
 }
 
-select, input[type="number"] {
+select, input[type="number"], input[type="text"] {
   margin: 10px;
   background-color: #f8e7c9;
   color: #333;
@@ -118,6 +118,6 @@ button:hover {
 .brew-clicked-button {
   position: absolute;
   top: -5px;
-  right: 20px;
+  right: 5px;
   transition: transform 0.3s ease-in-out;
 }
