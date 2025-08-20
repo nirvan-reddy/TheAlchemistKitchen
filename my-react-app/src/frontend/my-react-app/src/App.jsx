@@ -34,7 +34,7 @@ function App() {
       );
 
       setRecipes(detailedRecipes);
-      
+
       //setRecipes(response.data.results);
     } catch (error) {
       console.error("Error fetching recipes:", error);
@@ -45,7 +45,7 @@ function App() {
     <div className="min-h-screen bg-gray-900 text-gray-100 p-6 flex flex-col items-center">
       {!isBrewClicked ? (
         <>
-          <h1 className="text-lg text-gray-300">The Alchemist’s Kitchen</h1>
+          <h1 className="text-lg text-gray-300">The Alchemist's Kitchen</h1>
           <h2 className="text-4xl md:text-5xl font-serif mt-4">Explore your next potion...</h2>
 
           {/* FILTER CONTROLS */}
@@ -91,8 +91,7 @@ function App() {
           <button
             className="bg-amber-300 text-gray-900 text-xl font-semibold px-6 py-3 rounded-lg shadow-lg mt-6 hover:bg-amber-400 transition"
             onClick={handleBrew}
-          >
-            Let’s Brew
+          >Let's Brew
           </button>
         </>
       ) : (
@@ -111,7 +110,11 @@ function App() {
                   onClick={() => setSelectedRecipe(recipe)}
                 >
                   <h3>{recipe.title}</h3>
-                  <p>{recipe.pricePerServing ? `$${recipe.price.toFixed(2)}` : "$N/A"}</p>
+                  <p>
+                    {recipe.pricePerServing
+                      ? `$${(recipe.pricePerServing / 100).toFixed(2)}`
+                      : "$N/A"}
+                  </p>
                 </div>
               ))
             )}
@@ -122,12 +125,13 @@ function App() {
             {selectedRecipe ? (
               <>
                 <h2>{selectedRecipe.title}</h2>
+                <img
+                  src={selectedRecipe.image}
+                  alt={selectedRecipe.title}
+                  className="w-full max-w-md rounded-lg shadow-lg my-4"
+                />
                 <p>{selectedRecipe.summary || "No description available."}</p>
-                <a
-                  href={selectedRecipe.sourceUrl}
-                  target={selectedRecipe.sourceUrl}
-                  rel="noopener noreferrer"
-                >
+                <a href={selectedRecipe.sourceUrl} target="_blank" rel="noopener noreferrer">
                   View Full Recipe
                 </a>
               </>

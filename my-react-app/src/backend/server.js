@@ -34,6 +34,10 @@ app.get('/search-recipes', async (req, res) => {
     }
 });
 
+function cleanHtmlFromSummary(summary) {
+    return summary.replace(/<\/?[^>]+(>|$)/g, '');
+}
+
 // Get detailed recipe information
 app.get('/recipe/:id', async (req, res) => {
     try {
@@ -41,9 +45,15 @@ app.get('/recipe/:id', async (req, res) => {
         const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information`, {
             params: {
                 apiKey: SPOONACULAR_API_KEY,
-                includeNutrition: true // Include nutrition information
+                includeNutrition: true
             }
         });
+
+        // Clean the summary before sending
+        if (response.data.summary) {
+            response.data.summary = cleanHtmlFromSummary(response.data.summary);
+        }
+
         res.json(response.data);
     } catch (error) {
         console.error('Error details:', error.response?.data || error.message);

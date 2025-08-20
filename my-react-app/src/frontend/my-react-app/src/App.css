@@ -3,7 +3,7 @@
 @font-face {
   font-family: 'Avenir Next LT Pro';
   src: url('/fonts/AvenirNextLTPro-Regular.woff2') format('woff2'),
-       url('/fonts/AvenirNextLTPro-Regular.woff') format('woff');
+    url('/fonts/AvenirNextLTPro-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -71,7 +71,9 @@ h2 {
   transition: transform 0.3s ease-in-out;
 }
 
-select, input[type="number"], input[type="text"] {
+select,
+input[type="number"],
+input[type="text"] {
   margin: 10px;
   background-color: #f8e7c9;
   color: #333;
@@ -131,10 +133,12 @@ button:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  max-width: 1000px;
-  margin-top: 800px;
+  max-width: 1300px;
+  margin-top: 700px;
+
 }
-/* Container for main content after brew clicked */
+
+/* Container for main content after brew clicked
 .brew-clicked {
   display: flex;
   flex-direction: column;
@@ -142,24 +146,35 @@ button:hover {
   max-width: 1200px;
   margin-top: 60px;
   padding: 20px;
-}
+} */
 
-.recipe-boxes {
+/* .recipe-boxes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 50px;
-  margin-top: 200px;
+  margin-top: 20px;
   width: 100%;
+} */
+
+.recipe-list,
+.recipe-details {
+  height: 100%;
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+  min-width: 0;
+  /* Prevent overflow issues in grid */
+  box-sizing: border-box;
 }
+
 /* Left Box - Recipe List */
-/* .recipe-list {
+.recipe-list {
   background: #222;
   padding: 20px, 30px, 20px, 50px;
   border-radius: 10px;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
   width: 100%;
   text-align: left;
-} */
+}
 
 .recipe-list h2 {
   font-size: 1.8rem;
@@ -182,7 +197,8 @@ button:hover {
 }
 
 .recipe-item h3 {
-  font-size: 1.5rem; /* Larger Font */
+  font-size: 1.5rem;
+  /* Larger Font */
   font-family: 'IM Fell English', serif;
   font-weight: bold;
   margin: 0;
@@ -207,13 +223,15 @@ button:hover {
 }
 
 .recipe-details h2 {
-  font-size: 2rem; /* Increased Size */
+  font-size: 2rem;
+  /* Increased Size */
   color: #222;
   margin-bottom: 10px;
 }
 
 .recipe-details p {
-  font-size: 1.2rem; /* Increased Size */
+  font-size: 1.2rem;
+  /* Increased Size */
   line-height: 1.5;
 }
 

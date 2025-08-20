@@ -12,6 +12,36 @@ dist
 dist-ssr
 *.local
 
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Build folders
+/build
+/dist-ssr
+
+# Coverage directory used by testing tools
+/coverage
+
+# Local development files
+.eslintcache
+.prettierrc
+.prettierignore
+
+# Dependencies lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
